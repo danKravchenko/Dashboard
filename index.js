@@ -7,7 +7,6 @@ var { makeGroqReqest } = require('./src/groqAPI');
 var settings = require('./src/settings');
 var handlebars = require("express-handlebars");
 var cron = require('node-cron');
-var { setLogs } = require('./src/logger');
 
 var app = express();
 var mqttClient = new mqttHandler();
@@ -35,17 +34,14 @@ cron.schedule(' */10 * * * *', async () => {
   await paramsForecast("temperature");
   await paramsForecast("humidity");
   await paramsForecast("C02Emissions");
-  console.log(`Поточні параметри станом ${new Date().toLocaleDateString()}: температура - ${mqttClient.data.temperature},
-    вологість - ${mqttClient.data.humidity}, свіжість повітря - ${mqttClient.data.C02Emissions}. Очікувані: температура - ${settings.forecast.temperature}, 
-    вологість - ${settings.forecast.humidity}, свіжість повітря - ${settings.forecast.C02Emissions}.`);
-  /*settings.recommendation.text = await makeGroqReqest(`Ти система порад, яка враховує параметрами мікроклімату 
+  settings.recommendation.text = await makeGroqReqest(`Ти система порад, яка враховує параметрами мікроклімату 
     в приміщені та вплив на людину. Особливості людини: ${settings.description} Врахуй особливості та надай рекомендації щодо
     мікроклімату (температура, вологість, свіжість повітря). Поточні параметри: температура - ${mqttClient.data.temperature},
     вологість - ${mqttClient.data.humidity}, свіжість повітря - ${mqttClient.data.C02Emissions}. 
     Очікувані параметри мікроклімату на найближчі  10 хв: температура - ${settings.forecast.temperature}, 
     вологість - ${settings.forecast.humidity}, свіжість повітря - ${settings.forecast.C02Emissions}. Загальна рекомендацію в 1 невелике речення 
     (передбачено вентиляцію, охолодження, зволоження, обігрів в системі).`);
-  settings.recommendation.id = generator.get();*/
+  settings.recommendation.id = generator.get();
 });
 
 app.get("/", (req, res) => {
