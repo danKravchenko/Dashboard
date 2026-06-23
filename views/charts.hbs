@@ -1,0 +1,69 @@
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<h1>{{header}}</h1>
+<hr>
+<div id="content">
+    <div class="charts">
+        <div class="wrapper">
+            <canvas id="temperature-chart"></canvas>
+        </div>
+        <div class="wrapper">
+            <canvas id="humidity-chart"></canvas>
+        </div>
+        <div class="wrapper">
+            <canvas id="C02-emissions-chart"></canvas>
+        </div>
+    </div>
+    <div class="params-panel">
+        <div class="params">
+            <b>Параметри:</b>
+            <hr>
+            <p>Температура:</p>
+            <p>Вологість:</p>
+            <p>Свіжість повітря (рівень CO<sub>2</sub>):</p>
+        </div>
+        <div class="handling">
+            <b>Керування:</b>
+            <hr>
+            <div class="relay-inactive" onclick="setupRelay(1)">
+                <img src="./images/switch-off-button.png" alt="button-switch">
+                <p><b class="state-text">ВКЛ. </b>Увімкнути вентиляцію</p>
+            </div>
+            <div class="relay-inactive" onclick="setupRelay(2)">
+                <img src="./images/switch-off-button.png" alt="button-switch">
+                <p><b class="state-text">ВКЛ. </b>Запустити обігрів</p>
+            </div>
+            <div class="relay-inactive" onclick="setupRelay(3)">
+                <img src="./images/switch-off-button.png" alt="button-switch">
+                <p><b class="state-text">ВКЛ. </b>Активувати зволоження</p>
+            </div>
+            <div class="relay-inactive" onclick="setupRelay(4)">
+                <img src="./images/switch-off-button.png" alt="button-switch">
+                <p><b class="state-text">ВКЛ. </b>Увімкнути охолодження</p>
+            </div>
+        </div>
+    </div>
+    <div class="open-journal-icon" onclick="openJournal()">
+        <img src="./images/journal-icon.png" alt="open-journal" width="50">
+    </div>
+    <div class="journal">
+        <b>Повідомлення:</b>
+        <img class="close-journal-icon" src="./images/cross.png" alt="close" onclick="closeJournal()">
+        <hr>
+        <div class="messages"></div>
+    </div>
+</div>
+
+<script src="temperatureChart.js" type="module"></script>
+<script src="humidityChart.js" type="module"></script>
+<script src="getSensorsData.js" type="module"></script>
+<script src="C02EmissionsChart.js" type="module"></script>
+<script src="setupRelays.js" type="text/javascript"></script>
+
+<style>
+    #content {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: minmax(550px, 1200px) min(500px);
+    }
+</style>

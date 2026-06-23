@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Панель моніторингу</title>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <header>
+        <h3>Панель моніторингу</h3>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="tabs-panel" style="margin:20px;">
+        <div class="tabs">
+            <a href="/monitoring" class="tab-button">Моніторинг</a>
+            <a href="/profiles" class="tab-button">Профілі</a>
+            <a href="/logs" class="tab-button">Журнал подій</a>
+            <a href="/settings" class="tab-button">Налаштування</a>
+        </div>
+        <div id="content-wrapper">
+            {{{body}}}
+        </div>
+    </div>
+</body>
+<script src="navigableTabs.js" type="text/javascript"></script>
+<script src="overlayHeightResize.js" type="text/javascript"></script>
+
+</html>
